@@ -1,0 +1,121 @@
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.task-form {
+    background-color: #1f1f1f;
+    border-radius: 0.75rem;
+    border: 1px solid #2c2c2c;
+}
+
+.task-card {
+    background-color: #2a2a2a;
+    border: none;
+    border-radius: 0.5rem;
+    color: #e0e0e0;
+}
+
+.task-label {
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    max-width: 100%;
+}
+
+.task-card {
+    overflow: hidden;
+}
+
+.form-check {
+    min-width: 0;
+}
+
+form input[type="text"] {
+    background-color: #2f2f2f;
+    color: #f1f1f1;
+    border: 1px solid #444;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+}
+
+form input[type="text"]::placeholder {
+    color: #aaa;
+}
+
+form .btn {
+    background-color: #0066cc;
+    border: none;
+    color: white;
+    font-weight: 600;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: background 0.2s;
+}
+
+form .btn:hover {
+    background-color: #005bb5;
+}
+
+.form-check-label {
+    color: #f0f0f0;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked + .task-label {
+    text-decoration: line-through;
+    text-decoration-color: #ff6b6b;
+    opacity: 0.6;
+    font-style: italic;
+}
+
+.form-check-input {
+    background-color: #333;
+    border: 1px solid #888;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.btn-outline-info,
+.btn-outline-danger {
+    color: #bbb;
+    border-color: #555;
+    transition: all 0.2s;
+}
+
+.btn-outline-info:hover {
+    background-color: #2196f3;
+    color: #fff;
+    border-color: #2196f3;
+}
+
+.btn-outline-danger:hover {
+    background-color: #e53935;
+    color: #fff;
+    border-color: #e53935;
+}
+
+.card-footer {
+    background-color: #1b1b1b;
+    border-top: 1px solid #333;
+    color: #888;
+}
+
+.text-muted {
+    color: #777 !important;
+}
+
+.text-center .bi {
+    opacity: 0.3;
+}
+
+@media (max-width: 576px) {
+    .task-card {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 0.75rem;
+    }
+}
