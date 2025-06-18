@@ -1,40 +1,45 @@
 const express = require('express');
 const path = require('path');
+const methodOverride = require('method-override');
 
 const app = express();
-const port = process.env.PORT || 8000;
+const port = 3000;
 
-app.set("view engine", "ejs");
+app.use(methodOverride('_method'));
 app.use(express.json());
-app.use(express.urlencoded({extended:true}));
-
+app.use(express.urlencoded({ extended: true }));
+app.set("view engine", "ejs");
 app.use('/static', express.static(path.join(__dirname, 'public')));
 
-var tasks=[];
+let tasks = [];
 
-app.get("/",(req,res)=>{
-  res.render("home",{tasks:tasks});
+// Display all tasks
+app.get("/", (req, res) => {
+  res.render("home", { tasks: tasks });
 });
 
-app.post("/",(req,res)=>{
-  var task=req.body.taskAdd;
-  tasks.push(task);
+// Create new task
+app.post("/tasks", (req, res) => {
+  tasks.push(req.body.taskAdd);
   res.redirect("/");
 });
 
-app.get("/edit/:index", (req, res) => {
-  const index = req.params.index;
+// Render edit form
+app.get("/tasks/:id/edit", (req, res) => {
+  const index = req.params.id;
   res.render("edit", { task: tasks[index], index: index });
 });
 
-app.post("/edit/:index", (req, res) => {
-  const index = req.params.index;
+// Update task
+app.put("/tasks/:id", (req, res) => {
+  const index = req.params.id;
   tasks[index] = req.body.editedTask;
   res.redirect("/");
 });
 
-app.get("/delete/:index", (req, res) => {
-  const index = req.params.index;
+// Delete task
+app.delete("/tasks/:id", (req, res) => {
+  const index = req.params.id;
   tasks.splice(index, 1);
   res.redirect("/");
 });
